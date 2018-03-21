@@ -222,8 +222,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 018913a6cc0d44e0d885c3b521746802, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jetpackPower: 12.5
-  boostPower: 9
+  jetpackPower: 20
+  boostPower: 15
   walkForce: 10
   maxWalkVelocity: 2
   rocket: {fileID: 50504970210142432, guid: 9e4d0209fe1384766a8ffc264a3962ec, type: 2}
@@ -236,6 +236,7 @@ MonoBehaviour:
   fuelText: {fileID: 1096030129}
   fuelConsumptionRate: 1
   fuelReplenishRate: 1
+  fallMultiplier: 3
   c: {fileID: 1362829190}
 --- !u!50 &528285769
 Rigidbody2D:
@@ -250,7 +251,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 3
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
