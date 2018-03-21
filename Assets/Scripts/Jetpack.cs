@@ -54,7 +54,7 @@ public class Jetpack : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		// If able to jump
+		// If the user is pressing Space
 		if (jumpInput) {
 			// And I have more than 0 fuel.
 			if (fuel > 0) {
