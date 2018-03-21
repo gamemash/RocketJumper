@@ -8,6 +8,7 @@ public class Jetpack : MonoBehaviour {
 
 	Animator anim;
 	Rigidbody2D rb;
+	SpriteRenderer sr;
 	float lastBoostTime;
 
 	public float jetpackPower;
@@ -36,6 +37,7 @@ public class Jetpack : MonoBehaviour {
 	void Start () {
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		sr = GetComponent<SpriteRenderer> ();
 	}
 
 	bool canMove () {
@@ -128,6 +130,13 @@ public class Jetpack : MonoBehaviour {
 			anim.SetFloat ("MoveSpeed", 0);
 			anim.speed = 1;
 		}
+
+		if (moveInput > 0) {
+			sr.flipX = false;
+		} else if (moveInput < 0) {
+			sr.flipX = true;
+		}
+
 			
 		if (Input.GetButtonDown("Fire1")) {
 			FireRocket();
