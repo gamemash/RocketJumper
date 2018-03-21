@@ -30,6 +30,7 @@ public class Jetpack : MonoBehaviour {
 	float fuel = 100;
 	public float fuelConsumptionRate;
 	public float fuelReplenishRate;
+	public float fallMultiplier = 5f;
 
 	public Camera c;
 
@@ -56,7 +57,13 @@ public class Jetpack : MonoBehaviour {
 		if (jumpInput) {
 			if (fuel > 0) {
 				fuel = fuel - fuelConsumptionRate;
-				rb.AddForce (new Vector2 (0, jetpackPower), ForceMode2D.Force);
+
+				if (rb.velocity.y < -1.8) {
+					Debug.Log (rb.velocity.y);
+					rb.velocity = new Vector2 (rb.velocity.x, rb.velocity.y * 0.7f);
+				} else {
+					rb.AddForce (new Vector2 (0, jetpackPower), ForceMode2D.Force);
+				}
 
 				anim.SetBool ("JetpackOn", true);
 			} else {
@@ -67,6 +74,13 @@ public class Jetpack : MonoBehaviour {
 			if (fuel < 100) {
 				fuel = fuel + fuelReplenishRate;
 			}
+		}
+
+		if (rb.velocity.y < 0 && !jumpInput) {
+			rb.velocity += Vector2.up * Physics.gravity.y * (fallMultiplier - 1) * Time.deltaTime;
+			rb.drag = 0.3f;
+		} else {
+			rb.drag = 3;
 		}
 	}
 
